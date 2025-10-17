@@ -1,0 +1,154 @@
+:root {
+  --accent: rgb(68, 154, 239);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url(https://www.10wallpaper.com/wallpaper/1920x1440/1409/Fiji_Islands-Landscape_HD_Wallpaper_1920x1440.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows: repeat(13, 30px);
+  color: #ffff;
+  filter: drop-shadow(2px 2px 4px black);
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+}
+
+header {
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  grid-column: 1 / -1;
+  grid-row: span 2;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.2s, color 0.2s, transform 0.2s;
+  padding: 0 8px;
+  display: inline-block;
+}
+
+header a:hover {
+  border-bottom: 2px solid var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.item1 {
+  margin-top: 34px;
+  grid-column: 2/3;
+  justify-self: end;
+}
+.item2 {
+  margin-top: 34px;
+  grid-column: 3/4;
+  justify-self: center;
+}
+
+.item3 {
+  margin-top: 34px;
+  justify-self: center;
+}
+
+.item4 {
+  width: fit-content;
+  margin-top: 34px;
+}
+
+.search-btn {
+  background: none; /* ingen bakgrunn */
+  border: none; /* ingen kant */
+  cursor: pointer; /* viser håndmarkør når du holder musen over */
+  padding: 0; /* fjerner ekstra plass inni knappen */
+  color: white;
+}
+
+.search-icon {
+  width: 24px; /* størrelsen på ikonet */
+  height: 24px;
+}
+
+.hovedoverskrift {
+  display: flex;
+  grid-column: 4 / 5;
+  grid-row: span 1;
+  font-size: larger;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  font-family: "Sankofa Display", sans-serif;
+  margin-top: 10px;
+}
+.sloganText {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+  font-family: "Imperial Script", "Times New Roman", Times, serif;
+  font-size: 3rem;
+}
+
+.sloganText h1 {
+  margin: 3rem;
+}
+
+.centerNavArea {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.navArea {
+  display: flex;
+  flex-direction: column;
+
+  width: fit-content;
+  margin: 40px;
+  padding: 1.5rem 2rem 2rem 2rem;
+
+  background-color: rgba(69, 69, 69, 0.4);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.navArea section {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.navArea button {
+  color: white;
+  background: none;
+  border: 2px solid white;
+  width: 10rem;
+  height: 3rem;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 32px;
+
+  transition: scale ease-in-out 0.1s;
+}
+
+.navArea button:hover {
+  cursor: pointer;
+  scale: 1.05;
+}
+.navArea h2 {
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+footer {
+  margin-top: 50vh;
+}
