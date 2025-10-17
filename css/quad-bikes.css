@@ -10,7 +10,7 @@
 
 body {
   /* 1. STI TIL BILDET */
-  background-image: url("../bilder/quadbilde.jpg");
+  background-image: url("../imgs/quadbilde.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
