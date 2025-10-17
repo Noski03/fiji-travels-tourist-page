@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  background-color: #0f7173;
+  border-radius: 0;
+  height: 10vh;
+  margin: 0;
+  height: 25vh;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.promotionHolder {
+  display: flex;
+  flex-direction: column;
+}
+.promotionTitle {
+  font-family: "Sankofa Display", sans-serif;
+  font-size: 42px;
+  color: white;
+  margin: 10px;
+  margin-left: 30px;
+  padding: 0px;
+  width: fit-content;
+  cursor: pointer;
+}
+footer a {
+  margin-left: 30px;
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+footer div {
+  width: 100%;
+}
+
+footer .socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 35px;
+  font-size: 24px;
+  padding-left: 15rem;
+}
+.socials i {
+  cursor: pointer;
+  color: white;
+}
+.socials h1 {
+  cursor: pointer;
+}

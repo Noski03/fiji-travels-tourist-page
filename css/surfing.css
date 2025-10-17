@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.overskrift {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+  filter: drop-shadow(4px 4px 4px black);
+}
+
+body {
+  background-image: url("../bilder/surfingbak.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  color: aliceblue;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  min-height: 125vh;
+}
+.tekst {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 1.5rem 2rem 2rem 2rem;
+  background-color: rgba(255, 255, 255, 0.871);
+  border-radius: 12px;
+  text-align: center;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.tekst p {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.centertekst {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+.tekst h2 {
+  margin-bottom: 1rem;
+}
+.centertekst {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+header {
+  background-color: rgba(0, 0, 0, 0.7); /* Svart med 70% opasitet */
+
+  display: flex;
+  justify-content: center; /* Senterer horisontalt */
+  align-items: center; /* Senterer vertikalt */
+
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Senterer vertikalt */
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  padding: 10px 25px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-icon {
+  /* dette er navigasjons iconene home osv i header */
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  margin: 0;
+}
+footer {
+  margin-top: auto;
+}
