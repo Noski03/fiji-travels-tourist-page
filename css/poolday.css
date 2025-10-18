@@ -20,7 +20,7 @@ body {
   margin-top: 0px;
   display: flex;
   flex-direction: column;
-  min-height: 125vh;
+  min-height: 100vh;
   object-fit: cover;
   object-position: bottom;
 }
@@ -57,6 +57,7 @@ body {
   width: 100%;
   display: grid;
   place-items: center;
+  margin-bottom: 25vh;
 }
 header {
   background-color: rgba(0, 0, 0, 0.7); /* Svart med 70% opasitet */

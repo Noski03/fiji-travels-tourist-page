@@ -142,13 +142,6 @@ footer {
     font-weight: 500;
   }
 
-  .video-container {
-    max-width: 95%;
-    min-height: 200px;
-    margin: 20px auto;
-    border-width: 3px;
-  }
-
   footer {
     margin-top: 5vh;
     padding: 20px 10px;

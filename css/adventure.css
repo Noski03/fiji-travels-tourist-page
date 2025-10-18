@@ -158,12 +158,3 @@ header {
     gap: 20px;
   }
 }
-@media (max-width: 600px) {
-  footer {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 10px 0 10px;
-    height: auto;
-    gap: 10px;
-  }
-}

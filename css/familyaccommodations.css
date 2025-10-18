@@ -20,7 +20,7 @@ body {
   margin-top: 0px;
   display: flex;
   flex-direction: column;
-  min-height: 125vh;
+  min-height: 100vh;
   object-fit: cover;
   object-position: bottom;
 }
@@ -48,6 +48,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 60vh;
+  margin-bottom: 25vh;
 }
 .tekst h2 {
   margin-bottom: 1rem;
