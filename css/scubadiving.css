@@ -89,3 +89,74 @@ header {
 footer {
   margin-top: auto;
 }
+@media (max-width: 900px) {
+  .top-nav {
+    padding: 10px 15px;
+  }
+  .overskrift {
+    font-size: 1.5rem;
+  }
+  .tekst {
+    margin: 40px;
+    padding: 1.2rem 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  .centertekst {
+    padding: 0 5px;
+  }
+  .top-nav {
+    padding: 10px 10px;
+    justify-content: space-between;
+  }
+
+  .overskrift {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0 5px;
+  }
+
+  .nav-icon {
+    font-size: 1.1rem;
+    padding: 0 5px;
+  }
+
+  .tekst {
+    width: 95%;
+    max-width: none;
+    margin: 20px auto;
+    padding: 1rem;
+  }
+
+  .tekst h2 {
+    font-size: 1.3rem;
+  }
+  .tekst p {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .video-container {
+    max-width: 95%;
+    min-height: 200px;
+    margin: 20px auto;
+    border-width: 3px;
+  }
+
+  footer {
+    margin-top: 5vh;
+    padding: 20px 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}

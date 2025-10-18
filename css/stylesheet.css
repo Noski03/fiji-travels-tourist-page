@@ -69,7 +69,7 @@ header a:hover {
 .search-btn {
   background: none; /* ingen bakgrunn */
   border: none; /* ingen kant */
-  cursor: pointer; /* viser håndmarkør når du holder musen over */
+  cursor: pointer;
   padding: 0; /* fjerner ekstra plass inni knappen */
   color: white;
 }
@@ -151,4 +151,117 @@ header a:hover {
 
 footer {
   margin-top: 50vh;
+}
+@media (max-width: 900px) {
+  header {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .item1 {
+    grid-column: 1/2;
+    justify-self: center;
+    margin-top: 20px;
+  }
+  .item2 {
+    grid-column: 2/3;
+    justify-self: center;
+    margin-top: 20px;
+  }
+  .hovedoverskrift {
+    grid-column: 3/4;
+    font-size: medium;
+  }
+  .item3 {
+    grid-column: 4/5;
+    justify-self: center;
+    margin-top: 20px;
+  }
+  .item4 {
+    grid-column: 5/6;
+    justify-self: center;
+    margin-top: 20px;
+  }
+  .sloganText h1 {
+    font-size: 2, 5rem;
+  }
+  .navArea section {
+    gap: 20px;
+  }
+  .navArea button {
+    width: 8rem;
+    height: 2.8rem;
+    font-size: 18px;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    grid-template-columns: none;
+    grid-row: unset;
+  }
+  header a {
+    padding: 5px 0;
+    margin: 5px 0;
+    width: 80%;
+    text-align: center;
+    grid-column: unset;
+    justify-self: center;
+    margin-top: 0px;
+  }
+  .hovedoverskrift {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  .hovedoverskrift h1 {
+    font-size: 1.8rem;
+  }
+  .sloganText {
+    display: block;
+    margin-top: 10px;
+  }
+  .sloganText h1 {
+    font-size: 1, 5rem;
+    margin: 1rem 10px;
+    text-align: center;
+  }
+  .navArea {
+    width: 90%;
+    margin: 20px auto;
+    padding: 1rem;
+  }
+  .navArea h2 {
+    font-size: 1.2rem;
+  }
+  .navArea section {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .navArea button {
+    width: 100%;
+    height: 2.5rem;
+    font-size: 16px;
+  }
+  footer {
+    margin-top: 5vh;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .promotionHolder {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .socials {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    display: flex;
+    gap: 20px;
+  }
 }
