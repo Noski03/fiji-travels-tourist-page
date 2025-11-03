@@ -36,12 +36,20 @@ body {
   margin-top: 55px;
   max-width: 1000px;
 }
-.tekst p {
+.tekst a {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
   font-weight: 600;
   margin-bottom: 10px;
+
+  color: hotpink;
+  text-decoration: none;
 }
+
+.tekst a:hover {
+  text-decoration: underline;
+}
+
 .tekst h3 {
   margin-bottom: 10px;
 }
@@ -142,7 +150,7 @@ footer {
   .tekst h2 {
     font-size: 1.3rem;
   }
-  .tekst p {
+  .tekst a {
     font-size: 0.9rem;
     font-weight: 500;
   }
