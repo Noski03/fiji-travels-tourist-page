@@ -152,6 +152,15 @@ header a:hover {
 footer {
   margin-top: 50vh;
 }
+
+#game {
+  transition: color 0.4s ease-in-out;
+}
+
+#game:hover {
+  color: rgb(212, 108, 134);
+}
+
 @media (max-width: 900px) {
   header {
     grid-template-columns: repeat(5, 1fr);
