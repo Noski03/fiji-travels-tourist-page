@@ -26,9 +26,9 @@
     <div class="bubble" style="width: 40px; height: 40px; left: 85%; animation-duration: 16s"></div>
   </div>
   <main>
-    <div class="prequizHolder">
+    <div class="prequizHolder" id="prequizHolder">
       <h3>Velkommen til quizzen. Skriv inn navn, alder, og ønsket lengde på quiz</h3>
-      <form>
+      <form id="prequizForm">
         <fieldset>
           <legend>Quiz Setup</legend>
 
@@ -66,15 +66,18 @@
         </fieldset>
       </form>
     </div>
-    <div class="quizHolder">
+    <div class="quizHolder" id="quizHolder">
       <div class="header">
         <h1 id="spørsmålTittel">Spørsmål</h1>
       </div>
       <section class="alternativer">
-        <button id="alternativ1" class="alternativ">Alternativ 1</button>
-        <button id="alternativ2" class="alternativ">Alternativ 2</button>
-        <button id="alternativ3" class="alternativ">Alternativ 3</button>
-        <button id="alternativ4" class="alternativ">Alternativ 4</button>
+        <div class="alternativerGrid">
+          <button id="alternativ1" class="alternativ">Alternativ 1</button>
+          <button id="alternativ2" class="alternativ">Alternativ 2</button>
+          <button id="alternativ3" class="alternativ">Alternativ 3</button>
+          <button id="alternativ4" class="alternativ">Alternativ 4</button>
+        </div>
+        <span id="answerStatus"></span>
       </section>
       <button id="sjekkSvar" class="check">Sjekk Svar</button>
     </div>

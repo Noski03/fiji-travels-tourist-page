@@ -115,7 +115,6 @@ main {
 
   width: 100%;
   height: 100%;
-
 }
 
 button {
@@ -134,11 +133,6 @@ button {
 }
 
 .alternativer {
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-
   width: 80%;
   height: 60%;
 
@@ -147,8 +141,25 @@ button {
 
   align-self: center;
   padding: 4rem;
+  padding-bottom: 0;
 
   box-shadow: 2px 2px 15px black;
+}
+
+.alternativerGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.alternativer span {
+  display: block;
+
+  width: 100%;
+
+  text-align: center;
+  font-size: 2rem;
 }
 
 button.alternativ {
@@ -171,6 +182,14 @@ button.alternativ.selected {
   background: orange;
 }
 
+button.alternativ.wrong {
+  background: red;
+}
+
+button.alternativ.correct {
+  background: #4ccc43;
+}
+
 button.check {
   width: 60%;
   height: 8%;
@@ -180,7 +199,7 @@ button.check {
   background: red;
   color: var(--text-color);
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   box-shadow: 2px 2px 15px black;
 
