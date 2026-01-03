@@ -128,6 +128,7 @@ const youAreAnimalImgElement = document.getElementById("youAreAnimalImg");
 const youAreAnimalHeaderElement = document.getElementById("youAreAnimalHeader");
 const scoreQuestionsElement = document.getElementById("scoreQuestions");
 const scorePercentageElement = document.getElementById("scorePercentage");
+const startPåNyttElement = document.getElementById("playAgainButton");
 
 const prequizHolderElement = document.getElementById('prequizHolder');
 const quizHolderElement = document.getElementById('quizHolder');
@@ -294,5 +295,9 @@ function avsluttQuiz() {
 }
 
 sjekkSvarKnapp.addEventListener("click", sjekkSvar);
+startPåNyttElement.addEventListener("click", () => {
+  summaryQuizHolderElement.style.display = 'none';
+  prequizHolderElement.style.display = 'flex';
+})
 
 svar = nyttSpørsmål();
