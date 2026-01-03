@@ -33,7 +33,7 @@ const spørsmålListe = [
     alternativer: [
       "Fijian, fransk og engelsk",
       "Engelsk, spansk og hindi",
-      ". Fijian, engelsk og hindi",
+      "Fijian, engelsk og hindi",
       "Kun fijian",
     ],
     svar: 2,
