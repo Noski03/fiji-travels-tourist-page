@@ -122,6 +122,7 @@ const spørsmålTittelElement = document.getElementById("spørsmålTittel");
 const alternativKnapperElementer = document.querySelectorAll(".alternativ");
 const sjekkSvarKnapp = document.getElementById("sjekkSvar");
 const svarViserSpanElement = document.getElementById("answerStatus");
+const spørsmålIgjenCounterElement = document.getElementById("spørsmålIgjenCounter");
 
 const prequizHolderElement = document.getElementById('prequizHolder');
 const quizHolderElement = document.getElementById('quizHolder');
@@ -145,13 +146,16 @@ form.addEventListener("submit", (event) => {
   console.log(data.get("quizLength")); */
 
   // Prepare quiz
-  if (data.get("quizLength" === 'short')) spørsmålIgjen = 5;
-  if (data.get("quizLength" === 'medium')) spørsmålIgjen = 10;
-  if (data.get("quizLength" === 'full')) spørsmålIgjen = 15;
+  if (data.get("quizLength") === 'short') spørsmålIgjen = 5;
+  if (data.get("quizLength") === 'medium') spørsmålIgjen = 10;
+  if (data.get("quizLength") === 'full') spørsmålIgjen = 15;
 
   // Show quiz frontend
   prequizHolderElement.style.display = 'none';
   quizHolderElement.style.display = 'flex';
+
+  console.log(spørsmålIgjen);
+  spørsmålIgjenCounterElement.textContent = `1/${spørsmålIgjen}`;
 });
 
 let valgtAlternativ = 4;
@@ -161,10 +165,13 @@ let spørsmålIgjen = 0;
 function nyttSpørsmål() {
   spørsmålIgjen -= 1;
 
-  if (spørsmålIgjen === 0) avsluttQuiz();
+  if (spørsmålIgjen === 0) {
+    avsluttQuiz();
+    return;
+  }
 
   // Få et nytt spørsmål
-  const rng = tilfeldigTall(spørsmålListe.length);
+  let rng = tilfeldigTall(spørsmålListe.length);
   for (let i = 0; i < spørsmålListe.length; i++) {
     if (spørsmålFått.includes(rng)) {
       rng = (rng + 1) % spørsmålListe.length;
@@ -204,6 +211,10 @@ function resetSpørsmål() {
   alternativKnapperElementer[valgtAlternativ].classList.remove("selected");
   valgtAlternativ = 4;
   svar = nyttSpørsmål();
+
+  const split = spørsmålIgjenCounterElement.textContent.split('/');
+  const totalQuestions = parseInt(split[1]);
+  spørsmålIgjenCounterElement.textContent = `${totalQuestions - spørsmålIgjen + 1}/${totalQuestions}`;
 }
 
 function visRiktigSvar() {
