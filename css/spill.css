@@ -44,13 +44,11 @@ main {
 }
 
 .prequizHolder {
-  display: block;
-
-  text-align: center;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  text-align: center;
 }
 
 .prequizHolder form {
@@ -210,6 +208,85 @@ button.check {
   margin: 4rem;
 
   align-self: center;
+}
+
+#summaryQuizHolder {
+  display: none;
+  flex-direction: row;
+
+  width: 100%;
+  height: 100%;
+}
+
+#summaryQuizHolder img {
+  max-width: 50%;
+  height: auto;
+  aspect-ratio: 14 / 16;
+  object-fit: cover;
+  object-position: 0%;
+
+  filter: drop-shadow(2px 2px 2px black);
+
+  border-radius: 4px;
+}
+
+#summaryQuizHolder .temperature {
+  display: none;
+
+  width: 10%;
+  height: 100%;
+  border: solid black 4px;
+}
+
+.quizResults {
+  width: 100%;
+
+  margin: 5rem 10rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #0f7173;
+
+  border-radius: 12px;
+
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+.quizResults>* {
+  color: white;
+}
+
+.quizHolder p {
+  display: block;
+  text-decoration: wavy;
+}
+
+.results {
+  width: 100%;
+  padding: 0 10rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.results>h2 {
+  font-size: 4rem;
+}
+
+.youAreAnimal {
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  margin-top: 10%;
+}
+
+.youAreAnimal h1 {
+  font-size: 6rem;
 }
 
 /* Bubble container */

@@ -124,8 +124,14 @@ const sjekkSvarKnapp = document.getElementById("sjekkSvar");
 const svarViserSpanElement = document.getElementById("answerStatus");
 const spørsmålIgjenCounterElement = document.getElementById("spørsmålIgjenCounter");
 
+const youAreAnimalImgElement = document.getElementById("youAreAnimalImg");
+const youAreAnimalHeaderElement = document.getElementById("youAreAnimalHeader");
+const scoreQuestionsElement = document.getElementById("scoreQuestions");
+const scorePercentageElement = document.getElementById("scorePercentage");
+
 const prequizHolderElement = document.getElementById('prequizHolder');
 const quizHolderElement = document.getElementById('quizHolder');
+const summaryQuizHolderElement = document.getElementById('summaryQuizHolder');
 
 for (let i = 0; i < alternativKnapperElementer.length; i++) {
   const alternativKnapp = alternativKnapperElementer[i];
@@ -154,13 +160,16 @@ form.addEventListener("submit", (event) => {
   prequizHolderElement.style.display = 'none';
   quizHolderElement.style.display = 'flex';
 
-  console.log(spørsmålIgjen);
+  totaleSpørsmål = spørsmålIgjen;
   spørsmålIgjenCounterElement.textContent = `1/${spørsmålIgjen}`;
 });
 
 let valgtAlternativ = 4;
 let svar = 0;
 let spørsmålIgjen = 0;
+
+let totaleSpørsmål = 15;
+let riktigeSvar = 0;
 
 function nyttSpørsmål() {
   spørsmålIgjen -= 1;
@@ -208,13 +217,15 @@ function resetSpørsmål() {
   sjekkSvarKnapp.textContent = "Sjekk Svar";
   svarViserSpanElement.textContent = "";
 
+  if (valgtAlternativ === svar) {
+    riktigeSvar += 1;
+  }
+
   alternativKnapperElementer[valgtAlternativ].classList.remove("selected");
   valgtAlternativ = 4;
   svar = nyttSpørsmål();
 
-  const split = spørsmålIgjenCounterElement.textContent.split('/');
-  const totalQuestions = parseInt(split[1]);
-  spørsmålIgjenCounterElement.textContent = `${totalQuestions - spørsmålIgjen + 1}/${totalQuestions}`;
+  spørsmålIgjenCounterElement.textContent = `${totaleSpørsmål - spørsmålIgjen + 1}/${totaleSpørsmål}`;
 }
 
 function visRiktigSvar() {
@@ -248,7 +259,38 @@ function sjekkSvar() {
 }
 
 function avsluttQuiz() {
+  const playerScore = riktigeSvar / totaleSpørsmål;
 
+  let imagePath = '../imgs/animales/birb.jpg';
+  let animal = 'Noah AUGOOON';
+
+  if (playerScore < 0.6) {
+    imagePath = '../imgs/animales/birb.jpg';
+    animal = 'Birb';
+  } else if (playerScore <= 0.6) {
+    imagePath = '../imgs/animales/seaturtle.jpg';
+    animal = 'Havskilpadde';
+  } else if (playerScore < 0.81) {
+    imagePath = '../imgs/animales/iguan.jpg';
+    animal = 'Iguan';
+  } else if (playerScore < 1) {
+    imagePath = '../imgs/animales/dolphin.jpg';
+    animal = 'Delfin';
+  } else if (playerScore === 1) {
+    imagePath = '../imgs/animales/shark.jpg';
+    animal = 'Hai';
+  } else {
+    console.error('..what?');
+  }
+
+  youAreAnimalImgElement.src = imagePath;
+  youAreAnimalHeaderElement.textContent = animal;
+
+  scoreQuestionsElement.textContent = `${riktigeSvar}/${totaleSpørsmål}`;
+  scorePercentageElement.textContent = `${Math.round(playerScore * 100)}%`;
+
+  quizHolderElement.style.display = 'none';
+  summaryQuizHolderElement.style.display = 'flex';
 }
 
 sjekkSvarKnapp.addEventListener("click", sjekkSvar);
