@@ -296,8 +296,7 @@ function avsluttQuiz() {
 
 sjekkSvarKnapp.addEventListener("click", sjekkSvar);
 startPåNyttElement.addEventListener("click", () => {
-  summaryQuizHolderElement.style.display = 'none';
-  prequizHolderElement.style.display = 'flex';
+  location.reload();
 })
 
 svar = nyttSpørsmål();

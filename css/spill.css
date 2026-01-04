@@ -1,23 +1,37 @@
-/* Reset */
+/* =========================================
+   1. Variables & Global Settings
+   ========================================= */
+:root {
+  /* Palette */
+  --main-color: #0f7173;
+  --accent-color: #68b1b3;
+  --main-bg-color: #a1e9eb;
+  --main-bg-transparent: rgba(161, 233, 235, 0.8);
+
+  /* Text Colors */
+  --title-color: #ffffff;
+  --text-color: #ffffff;
+  --input-text-color: #020807;
+
+  /* UI Elements */
+  --card-bg: #bbf1f4;
+  --buttons-bg: rgb(61, 241, 232);
+  --button-color: rgb(32, 122, 138);
+
+  /* Feedback Colors */
+  --status-correct: #4ccc43;
+  --status-wrong: #ff0000;
+  --status-selected: orange;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 body {
-  --main-color: #0f7173;
-  --accent-color: #68b1b3;
-  --main-bg-color: #a1e9eb;
-
-  --title-color: rgb(255, 255, 255);
-  --text-color: white;
-
-  --buttons-bg: rgb(61, 241, 232);
-  --button-color: rgb(32, 122, 138);
-  --submit-color: red;
-
+  font-family: "Poppins", sans-serif;
   min-height: 100vh;
   background: linear-gradient(135deg, var(--main-color), var(--accent-color));
   overflow: hidden;
@@ -27,106 +41,31 @@ body {
   align-items: center;
 }
 
+/* =========================================
+   2. Layout & Main Container
+   ========================================= */
 main {
   width: 80%;
+  max-width: 1200px;
   height: 70vh;
 
-  background: var(--main-bg-color);
-
+  background: var(--main-bg-transparent);
   border-radius: 12px;
-
-  display: flex;
-  flex-direction: column;
-
-  opacity: 0.8;
-
-  padding: 2rem;
-}
-
-.prequizHolder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  text-align: center;
-}
-
-.prequizHolder form {
-  width: 100%;
-  height: 100%;
-
-  transform: scale(0.8);
-
-  color: var(--main-color);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.prequizHolder fieldset {
   padding: 2rem;
 
-  background: #bbf1f4;
-  border: solid var(--accent-color) 2px;
-}
-
-.prequizHolder input {
-  padding: 0.5rem;
-
-  color: var(--main-bg-color);
-
-  background: var(--main-color);
-
-  border: solid var(--accent-color) 2px;
-  border-radius: 4px;
-}
-
-.prequizHolder input:focus {
-  color: #020807;
-  background: var(--main-bg-color);
-}
-
-.inputField {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.prequizHolder button {
-  margin: 2rem;
-  padding: 1rem 3rem;
-
-  color: #020807;
-  font-size: 1rem;
-  font-weight: bold;
-
-  background: var(--main-bg-color);
-  border: solid var(--main-color) 4px;
-  border-radius: 16px;
-}
-
-.quizHolder {
-  display: none;
-  /* Changed to 'flex' after prequiz is answered */
   flex-direction: column;
-
-  width: 100%;
-  height: 100%;
 }
 
-button {
-  cursor: pointer;
-}
-
+/* Header */
 .header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-
-  margin: 2rem;
+  align-items: center;
+  margin-top: 2rem;
 
   border-bottom: 2px solid black;
+  padding-bottom: 1rem;
 }
 
 .header h1 {
@@ -134,50 +73,124 @@ button {
   filter: drop-shadow(0px 0px 2px black);
 }
 
+/* =========================================
+   3. Pre-Quiz Section
+   ========================================= */
+.prequizHolder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.prequizHolder form {
+  width: 100%;
+  color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.prequizHolder fieldset {
+  padding: 2rem;
+  background: var(--card-bg);
+  border: solid var(--accent-color) 2px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.inputField {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.prequizHolder input {
+  padding: 0.5rem;
+  color: var(--main-bg-color);
+  background: var(--main-color);
+  border: solid var(--accent-color) 2px;
+  border-radius: 4px;
+}
+
+.prequizHolder input:focus {
+  color: var(--input-text-color);
+  background: var(--main-bg-color);
+  outline: none;
+}
+
+.prequizHolder button {
+  margin-top: 2rem;
+  padding: 1rem 3rem;
+  color: var(--input-text-color);
+  font-size: 1rem;
+  font-weight: bold;
+  background: var(--main-bg-color);
+  border: solid var(--main-color) 4px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.prequizHolder button:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   4. Active Quiz Section
+   ========================================= */
+.quizHolder {
+  display: none;
+  /* Toggled via JS */
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
 .alternativer {
   width: 80%;
   height: 60%;
-
   background: var(--buttons-bg);
   border-radius: 32px;
-
   align-self: center;
-  padding: 4rem;
-  padding-bottom: 0;
+  padding: 2rem;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
 
-  box-shadow: 2px 2px 15px black;
-}
-
-.alternativerGrid {
-  display: grid;
-
-  width: 100%;
-  height: 80%;
-
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .alternativer span {
   display: block;
-
   width: 100%;
-
   text-align: center;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  /* Responsive font size */
+  margin-bottom: 2rem;
+}
+
+.alternativerGrid {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
 }
 
 button.alternativ {
-  margin: 1rem;
-
   border: none;
   border-radius: 4px;
-
   background: var(--button-color);
   color: var(--text-color);
-
-  font-size: 2rem;
-
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
@@ -185,156 +198,97 @@ button.alternativ:hover {
   opacity: 0.8;
 }
 
+/* State modifiers */
 button.alternativ.selected {
-  background: orange;
+  background: var(--status-selected);
 }
 
 button.alternativ.wrong {
-  background: red;
+  background: var(--status-wrong);
 }
 
 button.alternativ.correct {
-  background: #4ccc43;
+  background: var(--status-correct);
 }
 
 button.check {
   width: 60%;
-  height: 8%;
+  height: 3rem;
+  margin: 2rem auto;
 
   border: none;
   border-radius: 20px;
-  background: red;
+  background: var(--status-wrong);
   color: var(--text-color);
   font-weight: bold;
   font-size: 1.5rem;
-
   box-shadow: 2px 2px 15px black;
-
-  margin: 4rem;
-
-  align-self: center;
+  cursor: pointer;
 }
 
+/* =========================================
+   5. Results / Summary Section
+   ========================================= */
 #summaryQuizHolder {
   display: none;
-  flex-direction: row;
 
+  flex-direction: row;
   width: 100%;
   height: 100%;
+  gap: 2rem;
 }
 
 #summaryQuizHolder img {
-  max-width: 50%;
-  height: auto;
-  aspect-ratio: 14 / 16;
+  width: 50%;
+  height: 100%;
   object-fit: contain;
-
   filter: drop-shadow(2px 2px 2px black);
-
   border-radius: 4px;
 }
 
-#summaryQuizHolder .temperature {
-  display: none;
-
-  width: 10%;
-  height: 100%;
-  border: solid black 4px;
-}
-
 .quizResults {
-  width: 100%;
-
-  margin: 5rem 10rem;
+  flex: 1;
+  padding: 2rem;
+  background: var(--main-color);
+  border-radius: 12px;
+  filter: drop-shadow(2px 2px 2px black);
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
-  background: #0f7173;
-
-  border-radius: 12px;
-
-  filter: drop-shadow(2px 2px 2px black);
-}
-
-.quizResults>* {
   color: white;
-}
-
-.quizResults h3 {
-  margin: 2rem;
 }
 
 .results {
   width: 100%;
-  padding: 0 10rem;
-
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .results>h2 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .youAreAnimal {
-  display: flex;
-  flex-direction: column;
-
   text-align: center;
 }
 
+/* Animation Text */
 .youAreAnimal h1 {
-  font-size: 6rem;
-
-  animation: growShrink 1.5s ease-in-out infinite;
-}
-
-@keyframes growShrink {
-
-  0% {
-    transform: translateX(0deg);
-  }
-
-  0%,
-  100% {
-    font-size: 4rem;
-  }
-
-  100% {
-    transform: rotate(360deg);
-    transform: translateX(360deg);
-  }
-
-  70% {
-    transform: rotate(360deg);
-  }
-
-  50% {
-    font-size: 6rem;
-  }
-
-  10% {
-    transform: rotate(0deg);
-  }
+  animation: growShrink 3s ease-in-out infinite;
 }
 
 .quizResults button {
   width: 12rem;
   height: 5rem;
-
   font-size: 1.5em;
-
   background: var(--main-bg-color);
   color: #0f7173;
-
   border: solid var(--accent-color) 4px;
-
-  margin: 2rem;
-
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
@@ -343,25 +297,41 @@ button.check {
   background: #68b1b3;
 }
 
-/* Bubble container */
+/* =========================================
+   6. Animations
+   ========================================= */
+@keyframes growShrink {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.5);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Bubbles */
 .bubbles {
   position: fixed;
   width: 100%;
   height: 100%;
   z-index: -1;
   overflow: hidden;
+  pointer-events: none;
 }
 
-/* Individual bubbles */
 .bubble {
   position: absolute;
   bottom: -150px;
   background: rgba(255, 255, 255, 0.35);
   border-radius: 50%;
-  animation: floatUp linear infinite;
+  animation: floatUp 10s linear infinite;
 }
 
-/* Bubble animation */
 @keyframes floatUp {
   from {
     transform: translateY(0) scale(1);
