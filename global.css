@@ -21,6 +21,7 @@ footer {
   display: flex;
   flex-direction: column;
 }
+
 .promotionTitle {
   font-family: "Sankofa Display", sans-serif;
   font-size: 42px;
@@ -31,13 +32,15 @@ footer {
   width: fit-content;
   cursor: pointer;
 }
+
 footer a {
   margin-left: 30px;
   font-family: "Times New Roman", Times, serif;
-  text-decoration: none;
+  text-decoration: underline;
   color: white;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
+
 footer div {
   width: 100%;
 }
@@ -51,10 +54,12 @@ footer .socials {
   font-size: 24px;
   padding-left: 15rem;
 }
+
 .socials i {
   cursor: pointer;
   color: white;
 }
+
 .socials h1 {
   cursor: pointer;
 }
