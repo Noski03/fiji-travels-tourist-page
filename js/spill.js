@@ -84,14 +84,12 @@ const spørsmålListe = [
     svar: 2,
   },
   {
-    spørsmål:
-      "Hva er omtrent gjennomsnittstemperaturen om sommeren i Fiji?",
+    spørsmål: "Hva er omtrent gjennomsnittstemperaturen om sommeren i Fiji?",
     alternativer: ["15 °C", "20 °C", "27 °C", "35 °C"],
     svar: 2,
   },
   {
-    spørsmål:
-      "Hvilke dyr er de eneste opprinnelige landpattedyrene i Fiji?",
+    spørsmål: "Hvilke dyr er de eneste opprinnelige landpattedyrene i Fiji?",
     alternativer: ["flaggermus", "rotter", "katter", "aper"],
     svar: 0,
   },
@@ -122,7 +120,9 @@ const spørsmålTittelElement = document.getElementById("spørsmålTittel");
 const alternativKnapperElementer = document.querySelectorAll(".alternativ");
 const sjekkSvarKnapp = document.getElementById("sjekkSvar");
 const svarViserSpanElement = document.getElementById("answerStatus");
-const spørsmålIgjenCounterElement = document.getElementById("spørsmålIgjenCounter");
+const spørsmålIgjenCounterElement = document.getElementById(
+  "spørsmålIgjenCounter"
+);
 
 const youAreAnimalImgElement = document.getElementById("youAreAnimalImg");
 const youAreAnimalHeaderElement = document.getElementById("youAreAnimalHeader");
@@ -131,9 +131,9 @@ const scoreQuestionsElement = document.getElementById("scoreQuestions");
 const scorePercentageElement = document.getElementById("scorePercentage");
 const startPåNyttElement = document.getElementById("playAgainButton");
 
-const prequizHolderElement = document.getElementById('prequizHolder');
-const quizHolderElement = document.getElementById('quizHolder');
-const summaryQuizHolderElement = document.getElementById('summaryQuizHolder');
+const prequizHolderElement = document.getElementById("prequizHolder");
+const quizHolderElement = document.getElementById("quizHolder");
+const summaryQuizHolderElement = document.getElementById("summaryQuizHolder");
 
 for (let i = 0; i < alternativKnapperElementer.length; i++) {
   const alternativKnapp = alternativKnapperElementer[i];
@@ -153,13 +153,13 @@ form.addEventListener("submit", (event) => {
   alder = data.get("playerAge");
 
   // Prepare quiz
-  if (data.get("quizLength") === 'short') spørsmålIgjen = 5;
-  if (data.get("quizLength") === 'medium') spørsmålIgjen = 10;
-  if (data.get("quizLength") === 'full') spørsmålIgjen = 15;
+  if (data.get("quizLength") === "short") spørsmålIgjen = 5;
+  if (data.get("quizLength") === "medium") spørsmålIgjen = 10;
+  if (data.get("quizLength") === "full") spørsmålIgjen = 15;
 
   // Show quiz frontend
-  prequizHolderElement.style.display = 'none';
-  quizHolderElement.style.display = 'flex';
+  prequizHolderElement.style.display = "none";
+  quizHolderElement.style.display = "flex";
 
   totaleSpørsmål = spørsmålIgjen;
   spørsmålIgjenCounterElement.textContent = `1/${spørsmålIgjen}`;
@@ -169,7 +169,7 @@ let valgtAlternativ = 4;
 let svar = 0;
 let spørsmålIgjen = 0;
 
-let navn = 'Bruker';
+let navn = "Bruker";
 let alder = 16;
 
 let totaleSpørsmål = 15;
@@ -215,8 +215,8 @@ function velgAlternativ(index) {
 }
 
 function resetSpørsmål() {
-  alternativKnapperElementer[svar].classList.remove('correct');
-  alternativKnapperElementer[valgtAlternativ].classList.remove('wrong');
+  alternativKnapperElementer[svar].classList.remove("correct");
+  alternativKnapperElementer[valgtAlternativ].classList.remove("wrong");
 
   sjekkSvarKnapp.textContent = "Sjekk Svar";
   svarViserSpanElement.textContent = "";
@@ -229,14 +229,16 @@ function resetSpørsmål() {
   valgtAlternativ = 4;
   svar = nyttSpørsmål();
 
-  spørsmålIgjenCounterElement.textContent = `${totaleSpørsmål - spørsmålIgjen + 1}/${totaleSpørsmål}`;
+  spørsmålIgjenCounterElement.textContent = `${
+    totaleSpørsmål - spørsmålIgjen + 1
+  }/${totaleSpørsmål}`;
 }
 
 function visRiktigSvar() {
   sjekkSvarKnapp.textContent = "Neste Spørsmål";
 
-  alternativKnapperElementer[valgtAlternativ].classList.add('wrong');
-  alternativKnapperElementer[svar].classList.add('correct');
+  alternativKnapperElementer[valgtAlternativ].classList.add("wrong");
+  alternativKnapperElementer[svar].classList.add("correct");
 }
 
 function sjekkSvar() {
@@ -252,11 +254,9 @@ function sjekkSvar() {
     } else {
       // Du har valgt feil
       svarViserSpanElement.textContent = "❌";
-
     }
 
     visRiktigSvar();
-
   } else {
     resetSpørsmål();
   }
@@ -265,42 +265,42 @@ function sjekkSvar() {
 function avsluttQuiz() {
   const playerScore = riktigeSvar / totaleSpørsmål;
 
-  let imagePath = '../imgs/animales/birb.jpg';
-  let animal = 'Noah AUGOOON';
+  let imagePath = "../imgs/animales/birb.jpg";
+  let animal = "Noah AUGOOON";
 
   if (playerScore < 0.6) {
-    imagePath = '../imgs/animales/birb.jpg';
-    animal = 'Birb';
+    imagePath = "../imgs/animales/birb.jpg";
+    animal = "Bird";
   } else if (playerScore <= 0.6) {
-    imagePath = '../imgs/animales/seaturtle.jpg';
-    animal = 'Havskilpadde';
+    imagePath = "../imgs/animales/seaturtle.jpg";
+    animal = "Havskilpadde";
   } else if (playerScore < 0.81) {
-    imagePath = '../imgs/animales/iguan.jpg';
-    animal = 'Iguan';
+    imagePath = "../imgs/animales/iguan.jpg";
+    animal = "Iguan";
   } else if (playerScore < 1) {
-    imagePath = '../imgs/animales/dolphin.jpg';
-    animal = 'Delfin';
+    imagePath = "../imgs/animales/dolphin.jpg";
+    animal = "Delfin";
   } else if (playerScore === 1) {
-    imagePath = '../imgs/animales/shark.jpg';
-    animal = 'Hai';
+    imagePath = "../imgs/animales/shark.jpg";
+    animal = "Hai";
   } else {
-    console.error('..what?');
+    console.error("..what?");
   }
 
-  youAreAElement.textContent = `Bra jobbet ${navn} (${alder})! Du er en`
+  youAreAElement.textContent = `Bra jobbet ${navn} (${alder})! Du er en`;
   youAreAnimalImgElement.src = imagePath;
   youAreAnimalHeaderElement.textContent = animal;
 
   scoreQuestionsElement.textContent = `${riktigeSvar}/${totaleSpørsmål}`;
   scorePercentageElement.textContent = `${Math.round(playerScore * 100)}%`;
 
-  quizHolderElement.style.display = 'none';
-  summaryQuizHolderElement.style.display = 'flex';
+  quizHolderElement.style.display = "none";
+  summaryQuizHolderElement.style.display = "flex";
 }
 
 sjekkSvarKnapp.addEventListener("click", sjekkSvar);
 startPåNyttElement.addEventListener("click", () => {
   location.reload();
-})
+});
 
 svar = nyttSpørsmål();
