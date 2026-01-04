@@ -225,13 +225,15 @@ function resetSpørsmål() {
     riktigeSvar += 1;
   }
 
-  alternativKnapperElementer[valgtAlternativ].classList.remove("selected");
+  alternativKnapperElementer.forEach(knapp => {
+    knapp.classList.remove("selected");
+  });
+
   valgtAlternativ = 4;
   svar = nyttSpørsmål();
 
-  spørsmålIgjenCounterElement.textContent = `${
-    totaleSpørsmål - spørsmålIgjen + 1
-  }/${totaleSpørsmål}`;
+  spørsmålIgjenCounterElement.textContent = `${totaleSpørsmål - spørsmålIgjen + 1
+    }/${totaleSpørsmål}`;
 }
 
 function visRiktigSvar() {
@@ -270,7 +272,7 @@ function avsluttQuiz() {
 
   if (playerScore < 0.6) {
     imagePath = "../imgs/animales/birb.jpg";
-    animal = "Bird";
+    animal = "Birb";
   } else if (playerScore <= 0.6) {
     imagePath = "../imgs/animales/seaturtle.jpg";
     animal = "Havskilpadde";
