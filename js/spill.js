@@ -126,6 +126,7 @@ const spørsmålIgjenCounterElement = document.getElementById("spørsmålIgjenCo
 
 const youAreAnimalImgElement = document.getElementById("youAreAnimalImg");
 const youAreAnimalHeaderElement = document.getElementById("youAreAnimalHeader");
+const youAreAElement = document.getElementById("youAreA");
 const scoreQuestionsElement = document.getElementById("scoreQuestions");
 const scorePercentageElement = document.getElementById("scorePercentage");
 const startPåNyttElement = document.getElementById("playAgainButton");
@@ -148,9 +149,8 @@ form.addEventListener("submit", (event) => {
 
   const data = new FormData(form);
 
-  /* console.log(data.get("playerName"));
-  console.log(data.get("playerAge"));
-  console.log(data.get("quizLength")); */
+  navn = data.get("playerName");
+  alder = data.get("playerAge");
 
   // Prepare quiz
   if (data.get("quizLength") === 'short') spørsmålIgjen = 5;
@@ -168,6 +168,9 @@ form.addEventListener("submit", (event) => {
 let valgtAlternativ = 4;
 let svar = 0;
 let spørsmålIgjen = 0;
+
+let navn = 'Bruker';
+let alder = 16;
 
 let totaleSpørsmål = 15;
 let riktigeSvar = 0;
@@ -284,6 +287,7 @@ function avsluttQuiz() {
     console.error('..what?');
   }
 
+  youAreAElement.textContent = `Bra jobbet ${navn} (${alder})! Du er en`
   youAreAnimalImgElement.src = imagePath;
   youAreAnimalHeaderElement.textContent = animal;
 
