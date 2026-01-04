@@ -175,6 +175,8 @@ let alder = 16;
 let totaleSpørsmål = 15;
 let riktigeSvar = 0;
 
+let harSvart = false;
+
 function nyttSpørsmål() {
   spørsmålIgjen -= 1;
 
@@ -207,6 +209,7 @@ function nyttSpørsmål() {
 }
 
 function velgAlternativ(index) {
+  if (harSvart) return;
   alternativKnapperElementer[
     Math.min(valgtAlternativ, alternativKnapperElementer.length - 1)
   ].classList.remove("selected");
@@ -229,6 +232,7 @@ function resetSpørsmål() {
     knapp.classList.remove("selected");
   });
 
+  harSvart = false;
   valgtAlternativ = 4;
   svar = nyttSpørsmål();
 
@@ -257,6 +261,8 @@ function sjekkSvar() {
       // Du har valgt feil
       svarViserSpanElement.textContent = "❌";
     }
+
+    harSvart = true;
 
     visRiktigSvar();
   } else {
