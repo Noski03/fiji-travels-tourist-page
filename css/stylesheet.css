@@ -12,7 +12,6 @@ body {
   background-repeat: no-repeat;
   grid-template-columns: repeat(13, 1fr);
   grid-template-rows: repeat(13, 30px);
-  color: #ffff;
   filter: drop-shadow(2px 2px 4px black);
   margin: 0;
   padding: 0;
@@ -32,7 +31,7 @@ header {
 
 header a {
   text-decoration: none;
-  color: white;
+  color: var(--header-link-color);
   border-bottom: 2px solid transparent;
   transition: border-bottom-color 0.2s, color 0.2s, transform 0.2s;
   padding: 0 8px;
@@ -45,11 +44,20 @@ header a:hover {
   transform: translateY(-2px) scale(1.05);
 }
 
+h1 {
+  color: var(--header-color);
+}
+
+h2 {
+  color: var(--subheader-color);
+}
+
 .item1 {
   margin-top: 34px;
   grid-column: 2/3;
   justify-self: end;
 }
+
 .item2 {
   margin-top: 34px;
   grid-column: 3/4;
@@ -67,15 +75,19 @@ header a:hover {
 }
 
 .search-btn {
-  background: none; /* ingen bakgrunn */
-  border: none; /* ingen kant */
+  background: none;
+  /* ingen bakgrunn */
+  border: none;
+  /* ingen kant */
   cursor: pointer;
-  padding: 0; /* fjerner ekstra plass inni knappen */
+  padding: 0;
+  /* fjerner ekstra plass inni knappen */
   color: white;
 }
 
 .search-icon {
-  width: 24px; /* størrelsen på ikonet */
+  width: 24px;
+  /* størrelsen på ikonet */
   height: 24px;
 }
 
@@ -90,6 +102,7 @@ header a:hover {
   font-family: "Sankofa Display", sans-serif;
   margin-top: 10px;
 }
+
 .sloganText {
   display: flex;
   justify-content: center;
@@ -128,9 +141,9 @@ header a:hover {
 }
 
 .navArea button {
-  color: white;
+  color: var(--nav-button-color);
   background: none;
-  border: 2px solid white;
+  border: 2px solid var(--nav-button-color);
   width: 10rem;
   height: 3rem;
   font-size: 20px;
@@ -144,6 +157,7 @@ header a:hover {
   cursor: pointer;
   scale: 1.05;
 }
+
 .navArea h2 {
   margin-bottom: 20px;
   margin-top: 0px;
@@ -165,42 +179,51 @@ footer {
   header {
     grid-template-columns: repeat(5, 1fr);
   }
+
   .item1 {
     grid-column: 1/2;
     justify-self: center;
     margin-top: 20px;
   }
+
   .item2 {
     grid-column: 2/3;
     justify-self: center;
     margin-top: 20px;
   }
+
   .hovedoverskrift {
     grid-column: 3/4;
     font-size: medium;
   }
+
   .item3 {
     grid-column: 4/5;
     justify-self: center;
     margin-top: 20px;
   }
+
   .item4 {
     grid-column: 5/6;
     justify-self: center;
     margin-top: 20px;
   }
+
   .sloganText h1 {
     font-size: 2, 5rem;
   }
+
   .navArea section {
     gap: 20px;
   }
+
   .navArea button {
     width: 8rem;
     height: 2.8rem;
     font-size: 18px;
   }
 }
+
 @media (max-width: 600px) {
   header {
     display: flex;
@@ -211,6 +234,7 @@ footer {
     grid-template-columns: none;
     grid-row: unset;
   }
+
   header a {
     padding: 5px 0;
     margin: 5px 0;
@@ -220,40 +244,49 @@ footer {
     justify-self: center;
     margin-top: 0px;
   }
+
   .hovedoverskrift {
     width: 100%;
     margin-top: 5px;
     margin-bottom: 10px;
   }
+
   .hovedoverskrift h1 {
     font-size: 1.8rem;
   }
+
   .sloganText {
     display: block;
     margin-top: 10px;
   }
+
   .sloganText h1 {
     font-size: 1, 5rem;
     margin: 1rem 10px;
     text-align: center;
   }
+
   .navArea {
     width: 90%;
     margin: 20px auto;
     padding: 1rem;
   }
+
   .navArea h2 {
     font-size: 1.2rem;
   }
+
   .navArea section {
     flex-direction: column;
     gap: 15px;
   }
+
   .navArea button {
     width: 100%;
     height: 2.5rem;
     font-size: 16px;
   }
+
   footer {
     margin-top: 5vh;
     padding: 20px 15px;
@@ -262,11 +295,13 @@ footer {
     align-items: flex-start;
     text-align: left;
   }
+
   .promotionHolder {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
+
   .socials {
     margin-top: 15px;
     font-size: 1.5rem;

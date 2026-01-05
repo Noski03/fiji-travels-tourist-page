@@ -4,8 +4,35 @@
   padding: 0;
 }
 
+/*
+
+ _____ _   _ _____ __  __ _____    ____ ___  _     ___  ____  ____  
+|_   _| | | | ____|  \/  | ____|  / ___/ _ \| |   / _ \|  _ \/ ___| 
+  | | | |_| |  _| | |\/| |  _|   | |  | | | | |  | | | | |_) \___ \ 
+  | | |  _  | |___| |  | | |___  | |__| |_| | |__| |_| |  _ < ___) |
+  |_| |_| |_|_____|_|  |_|_____|  \____\___/|_____\___/|_| \_\____/ 
+
+*/
+
+body {
+  --header-link-color: #FFF;
+  --header-color: #FFFFFF;
+  --subheader-color: white;
+  --nav-button-color: white;
+
+  --footer-background-color: #0f7173;
+}
+
+body.darkmode {
+  --header-link-color: #000;
+}
+
+body.darkmode .has-bg {
+  opacity: 1;
+}
+
 footer {
-  background-color: #0f7173;
+  background-color: var(--footer-background-color);
   border-radius: 0;
   height: 10vh;
   margin: 0;
@@ -84,6 +111,6 @@ footer .socials {
   opacity: 0;
 }
 
-#dark-mode-switch input[type="checkbox"]:checked ~ label {
+#dark-mode-switch input[type="checkbox"]:checked~label {
   background-color: #777 !important;
 }
