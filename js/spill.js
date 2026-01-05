@@ -6,16 +6,16 @@ const spørsmålListe = [
   {
     spørsmål: "Hvor ligger Fiji geografisk?",
     alternativer: [
-      "A. Sør for Australia",
-      "B. Nord for New Zealand",
-      "C. Øst for Japan",
-      "D. Vest for Brasil",
+      "Sør for Australia",
+      "Nord for New Zealand",
+      "Øst for Japan",
+      "Vest for Brasil",
     ],
     svar: 1,
   },
   {
     spørsmål: "Hva er hovedstaden i Fiji?",
-    alternativer: ["A. Lautoka", "B. Nadi", "C. Suva", "D. Denarau"],
+    alternativer: ["Lautoka", "Nadi", "Suva", "Denarau"],
     svar: 2,
   },
   {
@@ -31,10 +31,10 @@ const spørsmålListe = [
   {
     spørsmål: "Hvilke språk snakkes i Fiji?",
     alternativer: [
-      "Fijian, fransk og engelsk",
-      "Engelsk, spansk og hindi",
-      "Fijian, engelsk og hindi",
-      "Kun fijian",
+      "Fijian, Fransk og Engelsk",
+      "Engelsk, Spansk og Hindi",
+      "Fijian, Engelsk og Hindi",
+      "Kun Fijian",
     ],
     svar: 2,
   },
@@ -90,16 +90,16 @@ const spørsmålListe = [
   },
   {
     spørsmål: "Hvilke dyr er de eneste opprinnelige landpattedyrene i Fiji?",
-    alternativer: ["flaggermus", "rotter", "katter", "aper"],
+    alternativer: ["Flaggermus", "Rotter", "Katter", "Aper"],
     svar: 0,
   },
   {
     spørsmål: "Hva er spesielt med Fiji-iguanen?",
     alternativer: [
-      "den lever 80% av livet sitt i havet",
-      "den er nattaktiv",
-      "den er verdens største øgle",
-      "den finnes kun på Fiji",
+      "Den lever 80% av livet sitt i havet",
+      "Den er nattaktiv",
+      "Den er verdens største øgle",
+      "Den finnes kun på Fiji",
     ],
     svar: 3,
   },
@@ -228,7 +228,7 @@ function resetSpørsmål() {
     riktigeSvar += 1;
   }
 
-  alternativKnapperElementer.forEach(knapp => {
+  alternativKnapperElementer.forEach((knapp) => {
     knapp.classList.remove("selected");
   });
 
@@ -236,8 +236,9 @@ function resetSpørsmål() {
   valgtAlternativ = 4;
   svar = nyttSpørsmål();
 
-  spørsmålIgjenCounterElement.textContent = `${totaleSpørsmål - spørsmålIgjen + 1
-    }/${totaleSpørsmål}`;
+  spørsmålIgjenCounterElement.textContent = `${
+    totaleSpørsmål - spørsmålIgjen + 1
+  }/${totaleSpørsmål}`;
 }
 
 function visRiktigSvar() {
