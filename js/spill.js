@@ -209,7 +209,8 @@ function nyttSpørsmål() {
 }
 
 function velgAlternativ(index) {
-  if (harSvart) return;
+  if (harSvart) return; // Fikser bug med at flere knapper blir røde
+
   alternativKnapperElementer[
     Math.min(valgtAlternativ, alternativKnapperElementer.length - 1)
   ].classList.remove("selected");
@@ -236,9 +237,8 @@ function resetSpørsmål() {
   valgtAlternativ = 4;
   svar = nyttSpørsmål();
 
-  spørsmålIgjenCounterElement.textContent = `${
-    totaleSpørsmål - spørsmålIgjen + 1
-  }/${totaleSpørsmål}`;
+  spørsmålIgjenCounterElement.textContent = `${totaleSpørsmål - spørsmålIgjen + 1
+    }/${totaleSpørsmål}`;
 }
 
 function visRiktigSvar() {
