@@ -76,9 +76,9 @@ const spørsmålListe = [
   {
     spørsmål: "Hvordan er klimaet i Fiji?",
     alternativer: [
-      "kalde vintre",
-      "varmt i 2-3 måneder i året",
-      "varmt året rundt",
+      "Kalde vintre",
+      "Varmt i 2-3 måneder i året",
+      "Varmt året rundt",
       "4 tydelige årstider",
     ],
     svar: 2,
