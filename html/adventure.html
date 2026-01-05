@@ -1,80 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="../css/adventure.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sankofa+Display&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Fiji Travels - Adventure</title>
+    <link rel="icon" href="../favico.png" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../global.css" />
-  <link rel="stylesheet" href="../css/adventure.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sankofa+Display&display=swap" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Fiji Travels - Adventure</title>
-  <link rel="icon" href="../favico.png" type="image/x-icon">
-</head>
-
-<body>
-  <header class="top-nav">
-    <a href="../index.html" class="nav-icon home">
-      <i class="fa-solid fa-house"></i>
-    </a>
-
-    <h1 class="overskrift">Adventure</h1>
-    <button id="sidebarMenuButton" class="nav-icon profile">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </header>
-  <aside id="sidebar" class="sidebar">
-    <h2 class="logo">My Site</h2>
-    <nav>
-      <ul>
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Resources</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </aside>
-  <main class="adventure-container">
-    <div class="activity-grid">
-      <a href="quad-bikes.html" class="activity-item">
-        <img src="../imgs/quad.jpg" alt="quad bike" />
-        <span>Quad bikes</span>
+  <body>
+    <header class="top-nav">
+      <a href="../index.html" class="nav-icon home">
+        <i class="fa-solid fa-house"></i>
       </a>
 
-      <a href="scubadiving.html" class="activity-item">
-        <img src="../imgs/scuba-diving.jpg" alt="scubadiver." />
-        <span>Scuba Diving</span>
-      </a>
+      <h1 class="overskrift">Adventure</h1>
+      <button id="sidebarMenuButton" class="nav-icon profile">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </header>
+    <aside id="sidebar" class="sidebar">
+      <h2 class="logo">Fiji Travels</h2>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="familie.html">Familie</a></li>
+          <li><a href="chill.html">Chill</a></li>
+          <li><a href="spill.html">Game</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="adventure-container">
+      <div class="activity-grid">
+        <a href="quad-bikes.html" class="activity-item">
+          <img src="../imgs/quad.jpg" alt="quad bike" />
+          <span>Quad bikes</span>
+        </a>
 
-      <a href="surfing.html" class="activity-item">
-        <img src="../imgs/surfing.jpg" alt="En surfer på en stor, blå bølge." />
-        <span>Surfing</span>
-      </a>
+        <a href="scubadiving.html" class="activity-item">
+          <img src="../imgs/scuba-diving.jpg" alt="scubadiver." />
+          <span>Scuba Diving</span>
+        </a>
 
-      <a href="climbing.html" class="activity-item">
-        <img src="../imgs/climbing.jpg" alt="En person som klatrer på en bratt fjellvegg." />
-        <span>Climbing</span>
-      </a>
-    </div>
-  </main>
-  <footer>
-    <div class="promotionHolder">
-      <a href="#" class="promotionTitle">Fiji travels</a>
-      <a href="mailto:E-mail: Fiji.travels@gmail.com">E-mail: Fiji.travels@gmail.com</a>
-    </div>
-    <div class="socials">
-      <i class="fa-brands fa-youtube"></i>
-      <i class="fa-brands fa-x-twitter"></i>
-      <i class="fa-brands fa-instagram"></i>
-    </div>
-  </footer>
-  <script src="../js/global.js"></script>
-</body>
+        <a href="surfing.html" class="activity-item">
+          <img
+            src="../imgs/surfing.jpg"
+            alt="En surfer på en stor, blå bølge."
+          />
+          <span>Surfing</span>
+        </a>
 
+        <a href="climbing.html" class="activity-item">
+          <img
+            src="../imgs/climbing.jpg"
+            alt="En person som klatrer på en bratt fjellvegg."
+          />
+          <span>Climbing</span>
+        </a>
+      </div>
+    </main>
+    <footer>
+      <div class="promotionHolder">
+        <a href="#" class="promotionTitle">Fiji travels</a>
+        <a href="mailto:E-mail: Fiji.travels@gmail.com"
+          >E-mail: Fiji.travels@gmail.com</a
+        >
+      </div>
+      <div class="socials">
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-x-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+    </footer>
+    <script src="../js/global.js"></script>
+  </body>
 </html>
