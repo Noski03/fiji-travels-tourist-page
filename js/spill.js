@@ -145,7 +145,7 @@ const scorePercentageElement = document.getElementById("scorePercentage");
 // Quiz logic
 let spørsmålFått = [];
 let valgtAlternativ = 4; // 4 betyr at du ikke har valgt et alternativ
-let svar = 0;
+let svarIndex = 0;
 let spørsmålIgjen = 0;
 
 // Form data
@@ -178,19 +178,22 @@ function nyttSpørsmål() {
 
   // Få et nytt spørsmål
   let rng = tilfeldigTall(spørsmålListe.length); // Får tall fra og med 0 til og med 14 (til 15)
-  for (let i = 0; i < spørsmålListe.length; i++) {
-    if (spørsmålFått.includes(rng)) {
-      rng = (rng + 1) % spørsmålListe.length;
+  for (let i = 0; i < spørsmålListe.length; i++) { // Sjekk av vi ikke har fått spørsmålet før
+    if (spørsmålFått.includes(rng)) { // Hvis vi har fått spørsmålet før
+      rng = (rng + 1) % spørsmålListe.length; // Gå en videre (modulo: wrap rundt lengden til listen, altsa 14 + 1 = 0)
     }
   }
 
+  // Legg det nye spørsmålet i et objekt
   const nyttTilfeldigSpørsmål = spørsmålListe[rng];
-  spørsmålFått.push(rng);
+  spørsmålFått.push(rng); // Jeg til spørsmålet i 'spørsmålFått' listen sånn at vi ikke kan få det samme spørsmålet om igjen
 
   // Legge inn spørsmål og alternativer i html
+
   spørsmålTittelElement.textContent = nyttTilfeldigSpørsmål.spørsmål;
 
   for (let i = 0; i < nyttTilfeldigSpørsmål.alternativer.length; i++) {
+    // Gå gjennom alle alternativene til spørsmålet, og sett teksten til knappene til det samme som spørsmålsalternativet
     alternativKnapperElementer[i].textContent =
       nyttTilfeldigSpørsmål.alternativer[i];
   }
@@ -199,7 +202,7 @@ function nyttSpørsmål() {
 }
 
 function velgAlternativ(index) {
-  if (harSvart) return; // Fikser bug med at flere knapper blir røde
+  if (harSvart) return; // Gjør at du ikke kan trykke på noen andre knapper hvis du har valgt å sjekke svaret ditt
 
   alternativKnapperElementer[
     Math.min(valgtAlternativ, alternativKnapperElementer.length - 1)
@@ -208,14 +211,48 @@ function velgAlternativ(index) {
   alternativKnapperElementer[index].classList.add("selected");
 }
 
+function visRiktigSvar() {
+  sjekkSvarKnapp.textContent = "Neste Spørsmål";
+
+  alternativKnapperElementer[valgtAlternativ].classList.add("wrong"); // Sett fargen til det riktige alternativet til rødt
+  alternativKnapperElementer[svarIndex].classList.add("correct"); // Sett fargen til det riktige alternativet til grønt
+
+  // OBS! Vi har skrevet definisjonen til '.correct' etter definisjonen til '.wrong', som betyr at hvis du har valgt det riktige svaralternativet, vil den røde fargen bli overskrevet av den grønne
+}
+
+function sjekkSvar() {
+  if (sjekkSvarKnapp.textContent === "Sjekk Svar") {
+    // Hvis du trykker på knappen når det står "Sjekk Svar"
+
+    if (valgtAlternativ > alternativKnapperElementer.length - 1) {
+      alert("Du må velge et alternativ først!");
+      return;
+    }
+
+    if (valgtAlternativ === svarIndex) {
+      // Du har valgt riktig
+      svarViserSpanElement.textContent = "✅";
+    } else {
+      // Du har valgt feil
+      svarViserSpanElement.textContent = "❌";
+    }
+
+    harSvart = true; // Blokker bruker fra å trykke på noen andre svaralternativer, sjekk 'velgAlternativ'
+    visRiktigSvar();
+  } else {
+    // Hvis du trykker på knappen når det står "Neste Spørsmål"
+    resetSpørsmål();
+  }
+}
+
 function resetSpørsmål() {
-  alternativKnapperElementer[svar].classList.remove("correct");
+  alternativKnapperElementer[svarIndex].classList.remove("correct");
   alternativKnapperElementer[valgtAlternativ].classList.remove("wrong");
 
   sjekkSvarKnapp.textContent = "Sjekk Svar";
   svarViserSpanElement.textContent = "";
 
-  if (valgtAlternativ === svar) {
+  if (valgtAlternativ === svarIndex) {
     riktigeSvar += 1;
   }
 
@@ -225,66 +262,39 @@ function resetSpørsmål() {
 
   harSvart = false;
   valgtAlternativ = 4;
-  svar = nyttSpørsmål();
+  svarIndex = nyttSpørsmål();
 
   spørsmålIgjenCounterElement.textContent = `${totaleSpørsmål - spørsmålIgjen + 1
     }/${totaleSpørsmål}`;
 }
 
-function visRiktigSvar() {
-  sjekkSvarKnapp.textContent = "Neste Spørsmål";
-
-  alternativKnapperElementer[valgtAlternativ].classList.add("wrong");
-  alternativKnapperElementer[svar].classList.add("correct");
-}
-
-function sjekkSvar() {
-  if (sjekkSvarKnapp.textContent === "Sjekk Svar") {
-    if (valgtAlternativ > alternativKnapperElementer.length - 1) {
-      alert("Du må velge et alternativ først!");
-      return;
-    }
-
-    if (valgtAlternativ === svar) {
-      // Du har valgt riktig
-      svarViserSpanElement.textContent = "✅";
-    } else {
-      // Du har valgt feil
-      svarViserSpanElement.textContent = "❌";
-    }
-
-    harSvart = true;
-    visRiktigSvar();
-  } else {
-    resetSpørsmål();
-  }
-}
-
 function avsluttQuiz() {
   const playerScore = riktigeSvar / totaleSpørsmål;
 
+  // Set default values, in case something goes wrong
   let imagePath = "../imgs/animales/birb.jpg";
   let animal = "Noah AUGOOON";
 
-  if (playerScore < 0.6) {
+  if (playerScore < 0.5) { // Mindre enn 50%
     imagePath = "../imgs/animales/birb.jpg";
     animal = "Birb";
-  } else if (playerScore <= 0.6) {
+  } else if (playerScore <= 0.6) { // Mellom 50% og 60%
     imagePath = "../imgs/animales/seaturtle.jpg";
     animal = "Havskilpadde";
-  } else if (playerScore < 0.81) {
+  } else if (playerScore < 0.81) { // Mellom 60% og 81% (81 er ikke inklusiv)
     imagePath = "../imgs/animales/iguan.jpg";
     animal = "Iguan";
-  } else if (playerScore < 1) {
+  } else if (playerScore < 1) { // Mellom 81% og 100%
     imagePath = "../imgs/animales/dolphin.jpg";
     animal = "Delfin";
-  } else if (playerScore === 1) {
+  } else if (playerScore === 1) { // Perfekt score
     imagePath = "../imgs/animales/shark.jpg";
     animal = "Hai";
   } else {
-    console.error("..what?");
+    console.error("PlayerScore is above 100%: " + playerScore); // Grunnen til at vi la til default values, burde aldri skje. Kan bare skje hvis score er mer enn 100%
   }
 
+  // Endre på DOM elementer for å oppdatere seg
   youAreAElement.textContent = `Bra jobbet ${navn} (${alder})! Du er en`;
   youAreAnimalImgElement.src = imagePath;
   youAreAnimalHeaderElement.textContent = animal;
@@ -300,7 +310,7 @@ function avsluttQuiz() {
    EVENT LISTENERS
    ========================================= */
 
-// Alternativ knapper
+// Sette opp alternativ knapper
 for (let i = 0; i < alternativKnapperElementer.length; i++) {
   const alternativKnapp = alternativKnapperElementer[i];
   alternativKnapp.addEventListener("click", () => {
@@ -330,6 +340,7 @@ form.addEventListener("submit", (event) => {
   spørsmålIgjenCounterElement.textContent = `1/${spørsmålIgjen}`;
 });
 
+// Når du trykker på sjekkSvar knappen
 sjekkSvarKnapp.addEventListener("click", sjekkSvar);
 startPåNyttElement.addEventListener("click", () => {
   location.reload();
@@ -338,4 +349,4 @@ startPåNyttElement.addEventListener("click", () => {
 /* =========================================
    INITIALIZATION
    ========================================= */
-svar = nyttSpørsmål();
+svarIndex = nyttSpørsmål();
