@@ -1,7 +1,6 @@
-function tilfeldigTall(value) {
-  return Math.floor(Math.random() * value);
-}
-
+/* =========================================
+   CONSTANTS & DATA
+   ========================================= */
 const spørsmålListe = [
   {
     spørsmål: "Hvor ligger Fiji geografisk?",
@@ -114,69 +113,61 @@ const spørsmålListe = [
     svar: 1,
   },
 ];
-let spørsmålFått = [];
 
-const spørsmålTittelElement = document.getElementById("spørsmålTittel");
-const alternativKnapperElementer = document.querySelectorAll(".alternativ");
+/* =========================================
+   DOM ELEMENTS (Selectors)
+   ========================================= */
+// Containers
+const prequizHolderElement = document.getElementById("prequizHolder");
+const quizHolderElement = document.getElementById("quizHolder");
+const summaryQuizHolderElement = document.getElementById("summaryQuizHolder");
+
+// Input/Controls
+const form = document.getElementById("prequizForm");
 const sjekkSvarKnapp = document.getElementById("sjekkSvar");
-const svarViserSpanElement = document.getElementById("answerStatus");
-const spørsmålIgjenCounterElement = document.getElementById(
-  "spørsmålIgjenCounter"
-);
+const startPåNyttElement = document.getElementById("playAgainButton");
+const alternativKnapperElementer = document.querySelectorAll(".alternativ");
 
+// Text/Display
+const spørsmålTittelElement = document.getElementById("spørsmålTittel");
+const svarViserSpanElement = document.getElementById("answerStatus");
+const spørsmålIgjenCounterElement = document.getElementById("spørsmålIgjenCounter");
 const youAreAnimalImgElement = document.getElementById("youAreAnimalImg");
 const youAreAnimalHeaderElement = document.getElementById("youAreAnimalHeader");
 const youAreAElement = document.getElementById("youAreA");
 const scoreQuestionsElement = document.getElementById("scoreQuestions");
 const scorePercentageElement = document.getElementById("scorePercentage");
-const startPåNyttElement = document.getElementById("playAgainButton");
 
-const prequizHolderElement = document.getElementById("prequizHolder");
-const quizHolderElement = document.getElementById("quizHolder");
-const summaryQuizHolderElement = document.getElementById("summaryQuizHolder");
+/* =========================================
+   GLOBAL STATE (Variables)
+   ========================================= */
 
-for (let i = 0; i < alternativKnapperElementer.length; i++) {
-  const alternativKnapp = alternativKnapperElementer[i];
-  alternativKnapp.addEventListener("click", () => {
-    velgAlternativ(i);
-  });
-}
-
-const form = document.getElementById("prequizForm");
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); // stop page reload
-
-  const data = new FormData(form);
-
-  navn = data.get("playerName");
-  alder = data.get("playerAge");
-
-  // Prepare quiz
-  if (data.get("quizLength") === "short") spørsmålIgjen = 5;
-  if (data.get("quizLength") === "medium") spørsmålIgjen = 10;
-  if (data.get("quizLength") === "full") spørsmålIgjen = 15;
-
-  // Show quiz frontend
-  prequizHolderElement.style.display = "none";
-  quizHolderElement.style.display = "flex";
-
-  totaleSpørsmål = spørsmålIgjen;
-  spørsmålIgjenCounterElement.textContent = `1/${spørsmålIgjen}`;
-});
-
-let valgtAlternativ = 4;
+// Quiz logic
+let spørsmålFått = [];
+let valgtAlternativ = 4; // 4 betyr at du ikke har valgt et alternativ
 let svar = 0;
 let spørsmålIgjen = 0;
 
+// Form data
 let navn = "Bruker";
 let alder = 16;
 
+// Quiz result data
 let totaleSpørsmål = 15;
 let riktigeSvar = 0;
 
 let harSvart = false;
 
+/* =========================================
+   UTILITY FUNCTIONS
+   ========================================= */
+function tilfeldigTall(value) {
+  return Math.floor(Math.random() * value);
+}
+
+/* =========================================
+   APP LOGIC
+   ========================================= */
 function nyttSpørsmål() {
   spørsmålIgjen -= 1;
 
@@ -186,7 +177,7 @@ function nyttSpørsmål() {
   }
 
   // Få et nytt spørsmål
-  let rng = tilfeldigTall(spørsmålListe.length);
+  let rng = tilfeldigTall(spørsmålListe.length); // Får tall fra og med 0 til og med 14 (til 15)
   for (let i = 0; i < spørsmålListe.length; i++) {
     if (spørsmålFått.includes(rng)) {
       rng = (rng + 1) % spørsmålListe.length;
@@ -194,7 +185,6 @@ function nyttSpørsmål() {
   }
 
   const nyttTilfeldigSpørsmål = spørsmålListe[rng];
-
   spørsmålFått.push(rng);
 
   // Legge inn spørsmål og alternativer i html
@@ -264,7 +254,6 @@ function sjekkSvar() {
     }
 
     harSvart = true;
-
     visRiktigSvar();
   } else {
     resetSpørsmål();
@@ -307,9 +296,46 @@ function avsluttQuiz() {
   summaryQuizHolderElement.style.display = "flex";
 }
 
+/* =========================================
+   EVENT LISTENERS
+   ========================================= */
+
+// Alternativ knapper
+for (let i = 0; i < alternativKnapperElementer.length; i++) {
+  const alternativKnapp = alternativKnapperElementer[i];
+  alternativKnapp.addEventListener("click", () => {
+    velgAlternativ(i);
+  });
+}
+
+// Start game (Form submit)
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // stop page reload
+
+  const data = new FormData(form);
+
+  navn = data.get("playerName");
+  alder = data.get("playerAge");
+
+  // Prepare quiz
+  if (data.get("quizLength") === "short") spørsmålIgjen = 5;
+  if (data.get("quizLength") === "medium") spørsmålIgjen = 10;
+  if (data.get("quizLength") === "full") spørsmålIgjen = 15;
+
+  // Show quiz frontend
+  prequizHolderElement.style.display = "none";
+  quizHolderElement.style.display = "flex";
+
+  totaleSpørsmål = spørsmålIgjen;
+  spørsmålIgjenCounterElement.textContent = `1/${spørsmålIgjen}`;
+});
+
 sjekkSvarKnapp.addEventListener("click", sjekkSvar);
 startPåNyttElement.addEventListener("click", () => {
   location.reload();
 });
 
+/* =========================================
+   INITIALIZATION
+   ========================================= */
 svar = nyttSpørsmål();
